@@ -6,7 +6,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-type HealthWebHandler struct {}
+type HealthWebHandler struct{}
 
 func (h HealthWebHandler) Readiness(ctx *fiber.Ctx) error {
 	return ctx.SendStatus(http.StatusOK)

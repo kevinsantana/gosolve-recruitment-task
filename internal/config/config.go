@@ -22,7 +22,7 @@ type Log struct {
 type Config struct {
 	ApplicationVersion string
 	Server             Server
-	Log 			   Log
+	Log                Log
 }
 
 func InitConfig(ctx context.Context) *Config {
