@@ -9,8 +9,8 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-func GetSliceNums(ctx context.Context, path string) ([]int, error) {
-	var nums []int
+func GetSliceNums(ctx context.Context, path string) ([]int64, error) {
+	var nums []int64
 
 	file, err := os.Open(path)
 	if err != nil {
@@ -23,7 +23,7 @@ func GetSliceNums(ctx context.Context, path string) ([]int, error) {
 	scanner := bufio.NewScanner(file)
 	scanner.Split(bufio.ScanWords)
 	for scanner.Scan() {
-		x, err := strconv.Atoi(scanner.Text())
+		x, err := strconv.ParseInt(scanner.Text(), 10, 64)
 		if err != nil {
 			log.WithField("input file", path).
 				WithField("input line", x).
