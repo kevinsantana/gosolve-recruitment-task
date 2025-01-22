@@ -7,6 +7,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 
 	"github.com/kevinsantana/gosolve-recruitment-task/internal/rest"
+	"github.com/kevinsantana/gosolve-recruitment-task/internal/rest/handlers"
 	"github.com/kevinsantana/gosolve-recruitment-task/internal/rest/middlewares"
 )
 
@@ -39,6 +40,16 @@ func Router(health rest.HealthWebHandler) *fiber.App {
 		},
 	}
 
+	var searchValue = Routes{
+		{
+			Name:        "Search index by value",
+			Method:      http.MethodGet,
+			Pattern:     "/:value/search",
+			HandlerFunc: handlers.SearchByValueHandler,
+			Public:      true,
+		},
+	}
+
 	r := fiber.New(fiber.Config{
 		Prefork:               false,
 		CaseSensitive:         false,
@@ -55,6 +66,15 @@ func Router(health rest.HealthWebHandler) *fiber.App {
 	api := r.Group("/")
 	for _, route := range healthCheck {
 		api.Add(route.Method, route.Pattern, route.HandlerFunc)
+	}
+
+	v1 := api.Group("/api/v1")
+
+	var routes []Route
+	routes = append(routes, searchValue...)
+
+	for _, route := range routes {
+		v1.Add(route.Method, route.Pattern, route.HandlerFunc)
 	}
 
 	r.Use(middlewares.RouteNotFound())

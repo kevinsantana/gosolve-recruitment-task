@@ -60,7 +60,7 @@ func RouteNotFound() fiber.Handler {
 		return ctx.Status(fiber.StatusNotFound).
 			JSON(handlers.ResponseError{
 				Code:    "API|ROUTE_NOT_FOUND",
-				Message: "This route not found",
+				Message: "Route not found",
 			})
 	}
 }
