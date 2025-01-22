@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "6f8648f9-829e-4ce1-b21e-c87e6a3c0539",
+		"name": "gosolve",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30195643"
+	},
+	"item": [
+		{
+			"name": "healthcheck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5060/healthcheck",
+					"host": [
+						"localhost"
+					],
+					"port": "5060",
+					"path": [
+						"healthcheck"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search index by value success",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5060/api/v1/1150/search",
+					"host": [
+						"localhost"
+					],
+					"port": "5060",
+					"path": [
+						"api",
+						"v1",
+						"1150",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search index by value error",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5060/api/v1/999999999999999999999/search",
+					"host": [
+						"localhost"
+					],
+					"port": "5060",
+					"path": [
+						"api",
+						"v1",
+						"999999999999999999999",
+						"search"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
