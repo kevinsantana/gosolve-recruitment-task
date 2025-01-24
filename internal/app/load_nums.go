@@ -16,7 +16,7 @@ func GetSliceNums(ctx context.Context, path string) ([]int64, error) {
 	if err != nil {
 		log.WithField("input file", path).
 			WithError(err).
-			Panic("read input file")
+			Error("read input file")
 		return nil, err
 	}
 	defer file.Close()
